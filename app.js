@@ -22,10 +22,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/roles', require('./routes/roles'));
+app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/roles', require('./routes/roles'));
 app.use('/api/v1/products', require('./routes/products'));
 app.use('/api/v1/categories', require('./routes/categories'));
 
-mongoose.connect('mongodb+srv://play13072004_db_user:EdOeCmdaA8HKAdoo@cluster0.asrkxzs.mongodb.net/?appName=Cluster0');
+mongoose.connect('mongodb://localhost:27017/NNPTUD-C3');
 mongoose.connection.on('connected',()=>{
   console.log("connected");
 })
